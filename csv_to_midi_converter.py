@@ -25,9 +25,17 @@ if __name__ == "__main__":
         sys.exit(1)
     mode, input_file = sys.argv[1], sys.argv[2]
     if mode == "midi2csv":
-        midi_to_csv(input_file)
+        if input_file.endswith("midi"):
+            midi_to_csv(input_file)
+        else:
+            print("Enter proper file type")
+            sys.exit(3)
     elif mode == "csv2midi":
-        csv_to_midi(input_file)
+        if input_file.endswith("csv"):
+            csv_to_midi(input_file)
+        else:
+            print("Enter proper file type")
+            sys.exit(3)
     else:
         print("Unknown mode. Use 'midi2csv' or 'csv2midi'.")
         sys.exit(1)
